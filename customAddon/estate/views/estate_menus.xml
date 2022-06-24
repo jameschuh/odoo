@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+        <menuitem id="estate_menu_root" name="Estate" />
+        <menuitem id="estate_into_menu" name="Into Storage" parent="estate_menu_root" />
+        <menuitem id="estate_model_menu_action" name="Real Estate" parent="estate_into_menu" action="estate_model_action"/>
+        
+        <menuitem id="estate_set_menu" name="Setting" parent="estate_menu_root" />
+        <menuitem id="estate_type_menu_action" name="Estate Type" parent="estate_set_menu" action="estate_model_type_action"/>
+        <menuitem id="estate_tag_menu_action" name="Estate Tag" parent="estate_set_menu" action="estate_model_tag_action"/>
+</odoo>

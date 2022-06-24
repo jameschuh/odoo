@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data>
+                <record id="estate_model_action" model="ir.actions.act_window">
+                    <field name="name">New Estate</field>
+                    <field name="res_model">estate.property</field>
+                    <field name="view_mode">tree,form</field>
+                </record>
+        </data>
+        <!--id千万别和上边重复-->
+        <!-- 以下设置列表显示多列，默认仅显示name-->
+        <record id="estate_model_view_tree" model="ir.ui.view">
+            <field name="name">estate.property.tree</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <tree string="Estate Tree">
+                        <field name="name"/>
+                        <field name="tag_ids"/>
+                        <field name="property_type_id"/>
+                        <field name="description"/>
+                        <field name="postcode"/>
+                        <field name="expected_price"/>
+                        <field name="bedrooms"/>
+                        <field name="garden"/>
+                        <field name="garden_orientation"/>
+                </tree>
+            </field>
+        </record>
+        <!-- 定制form -->
+        <record id="estate_model_view_form" model="ir.ui.view">
+            <field name="name">estate.property.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                    <form string="Estate Form">
+                        <header>
+                                <!-- 显示一个状态 -->
+                                <field name="state" widget="statusbar"/>
+                        </header>
+                        <sheet>
+                                <div class="oe_title">
+                                        <div class="oe_edit_only">
+                                            <label for="name"/>
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16"/>
+                                        </h1>
+                                        <field name="tag_ids" widget="many2many_tags"/>
+                                </div>
+                                <group name="description_group">
+                                    <group name="desc_group">
+                                        <field name="description" />
+                                        <field name="postcode" />
+                                        <field name="date_availability" />
+                                        <field name="expected_price" />
+                                        <field name="selling_price" />
+                                        <field name="property_type_id" />
+                                    </group>
+                                    <group>
+                                        <field name="bedrooms" />
+                                        <field name="living_area" />
+                                        <field name="facades" />
+                                        <field name="garage" />
+                                        <field name="garden" />
+                                        <field name="garden_area" />
+                                        <field name="garden_orientation" />
+                                        <field name="active" />
+                                    </group>
+                                </group>
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+        <!-- 查询 -->
+        <record id="estate_model_view_search" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                    <search string="Search Opportunities">
+                        <field name="name"/>
+                        <filter string="Include archived" name="archived" domain="['|', ('active', '=', True), ('active', '=', False)]"/>
+                        <separator/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </search>
+            </field>
+        </record>
+</odoo>
