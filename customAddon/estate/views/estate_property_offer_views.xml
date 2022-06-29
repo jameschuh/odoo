@@ -13,8 +13,10 @@
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
                 <tree string="Estate Offer Tree">
-                    <field name="price"/>
                     <field name="partner_id"/>
+                    <field name="price"/>
+                    <field name="validity"/>
+                    <field name="date_deadline"/>
                     <field name="status"/>
                 </tree>
             </field>
@@ -27,8 +29,10 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="price"/>
                                 <field name="partner_id"/>
+                                <field name="price"/>
+                                <field name="validity"/>
+                                <field name="date_deadline"/>
                                 <field name="status"/>
                             </group>
                         </group>
